@@ -8,7 +8,7 @@ m4+definitions(['
    
    //m4_define(['M4_NUM_INSTRS'], 11)
    
-   m4_echo(m4tlv_riscv_gen__body())
+  // m4_echo(m4tlv_riscv_gen__body())
 '])
 
 
