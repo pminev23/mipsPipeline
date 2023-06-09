@@ -42,7 +42,7 @@ m4+definitions(['
       ?$rf_rd_en1
          $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]$value;
       ?$rf_rd_en2
-         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd)$value;
+         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]$value;
       `BOGUS_USE($rf_rd_data1 $rf_rd_data2) 
 
 
