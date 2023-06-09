@@ -18,7 +18,7 @@ m4+definitions(['
    @_stage
       \SV_plus
          // The program in an instruction memory.
-       logic [31:0] instrs [0:10];
+       logic [31:0] instrs [0:M4_NUM_INSTRS-1];
       assign instrs = '{
         {6'd13, 5'd0, 5'd6, 16'd0},             //    store_addr = 0
         {6'd13, 5'd0, 5'd1, 16'd1},             //    cnt = 1
