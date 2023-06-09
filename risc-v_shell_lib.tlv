@@ -6,7 +6,7 @@ m4+definitions(['
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
    
-   m4_define(['M4_NUM_INSTRS'], 11)
+   //m4_define(['M4_NUM_INSTRS'], 11)
    
    m4_echo(m4tlv_riscv_gen__body())
 '])
@@ -18,7 +18,7 @@ m4+definitions(['
    @_stage
       \SV_plus
          // The program in an instruction memory.
-       logic [31:0] instrs [0:M4_NUM_INSTRS-1];
+       logic [31:0] instrs [0:10];
       assign instrs = '{
         {6'd13, 5'd0, 5'd6, 16'd0},             //    store_addr = 0
         {6'd13, 5'd0, 5'd1, 16'd1},             //    cnt = 1
