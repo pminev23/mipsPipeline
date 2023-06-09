@@ -19,8 +19,10 @@ m4+definitions(['
       \SV_plus
          // The program in an instruction memory.
          logic [31:0] instrs [0:M4_NUM_INSTRS-1];
-         assign instrs = '{
-            m4_instr0['']m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [', m4_echo(['m4_instr']m4_instr_ind)'])
+          logic [31:0] instrs [0:14-1];
+      logic [40*8-1:0] instr_strs [0:14];
+      assign instrs[0] = {
+            12'b000000000000, 5'd0, 3'b110, 5'd31, 7'b0010011}; assign instrs[1] = {12'b000000000001, 5'd0, 3'b110, 5'd6, 7'b0010011}; assign instrs[2] = {12'b000000001010, 5'd0, 3'b110, 5'd7, 7'b0010011}; assign instrs[3] = {12'b000000000000, 5'd0, 3'b110, 5'd28, 7'b0010011}; assign instrs[4] = {7'b0000000, 5'd28, 5'd6, 3'b000, 5'd28, 7'b0110011}; assign instrs[5] = {7'b0000000, 5'd28, 5'd31, 3'b010, 5'b00000, 7'b0100011}; assign instrs[6] = {12'b000000000001, 5'd6, 3'b000, 5'd6, 7'b0010011}; assign instrs[7] = {12'b000000000100, 5'd31, 3'b000, 5'd31, 7'b0010011}; assign instrs[8] = {1'b1, 6'b111111, 5'd7, 5'd6, 3'b100, 4'b1000, 1'b1, 7'b1100011}; assign instrs[9] = {12'b111111111100, 5'd31, 3'b010, 5'd29, 7'b0000011}; assign instrs[10] = {12'b000000101101, 5'd0, 3'b000, 5'd30, 7'b0010011}; assign instrs[11] = {1'b0, 6'b000000, 5'd30, 5'd29, 3'b000, 4'b0100, 1'b0, 7'b1100011}; assign instrs[12] = {7'b0000000, 5'd0, 5'd30, 3'b000, 5'd30, 7'b0110011}; assign instrs[13] = {7'b0000000, 5'd0, 5'd29, 3'b000, 5'd29, 7'b0110011
          };
       /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
