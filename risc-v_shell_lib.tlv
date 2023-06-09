@@ -84,11 +84,11 @@ m4+definitions(['
             $ANY = /top|cpuviz/defaults/dmem<>0$ANY;
    // String representations of the instructions for debug.
    \SV_plus
-      logic [40*8-1:0] instr_strs [0:M4_NUM_INSTRS];
+      logic [40*8-1:0] instr_strs [0:11];
       assign instr_strs = '{m4_asm_mem_expr "END                                     "};
    |cpuviz
       @1
-         /imem[m4_eval(M4_NUM_INSTRS-1):0]  // TODO: Cleanly report non-integer ranges.
+         /imem[m4_eval(10):0]  // TODO: Cleanly report non-integer ranges.
             $instr[31:0] = /top|cpu/imem<>0$instr;
             $instr_str[40*8-1:0] = *instr_strs[imem];
             \viz_alpha
