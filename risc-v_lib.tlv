@@ -5,9 +5,9 @@
 m4+definitions(['
    m4_define_vector(['M4_WORD'], 32)
    m4_define(['M4_EXT_I'], 1)
-
+   
    m4_define(['M4_NUM_INSTRS'], 0)
-
+   
    m4_echo(m4tlv_riscv_gen__body())
 '])
 
@@ -26,7 +26,7 @@ m4+definitions(['
          $instr[31:0] = *instrs\[#imem\];
       ?$imem_rd_en
          $imem_rd_data[31:0] = /imem[$imem_rd_addr]$instr;
-
+    
 
 // A 2-rd 1-wr register file in |cpu that reads and writes in the given stages. If read/write stages are equal, the read values reflect previous writes.
 // Reads earlier than writes will require bypass.
@@ -40,9 +40,9 @@ m4+definitions(['
                                        $RETAIN;
    @_rd
       ?$rf_rd_en1
-         $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]$value;
+         $rf_rd_data1[31:0] = /xreg[$rf_rd_index1]>>m4_stage_eval(@_wr - @_rd)$value;
       ?$rf_rd_en2
-         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]$value;
+         $rf_rd_data2[31:0] = /xreg[$rf_rd_index2]>>m4_stage_eval(@_wr - @_rd)$value;
       `BOGUS_USE($rf_rd_data1 $rf_rd_data2) 
 
 
@@ -55,9 +55,9 @@ m4+definitions(['
          $value[31:0] = |cpu$reset ?   #dmem :
                         $wr        ?   |cpu$dmem_wr_data :
                                        $RETAIN;
-
+                                  
       ?$dmem_rd_en
-         $dmem_rd_data[31:0] = /dmem[$dmem_addr]>>1$value;
+         $dmem_rd_data[31:0] = /dmem[$dmem_addr]$value;
       `BOGUS_USE($dmem_rd_data)
 
 \TLV cpu_viz(@_stage)
@@ -134,7 +134,7 @@ m4+definitions(['
             $ld_data[31:0]       = 32'b0;
             $imem_rd_en          = 1'b0;
             $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = {M4_IMEM_INDEX_CNT{1'b0}};
-
+            
             /xreg[31:0]
                $value[31:0]      = 32'b0;
                $wr               = 1'b0;
@@ -153,15 +153,15 @@ m4+definitions(['
             `BOGUS_USE($is_s_instr $rd_valid $rs1_valid $rs2_valid)
             `BOGUS_USE($rf_wr_en $rf_wr_index $rf_wr_data $rf_rd_en1 $rf_rd_en2 $rf_rd_index1 $rf_rd_index2 $ld_data)
             `BOGUS_USE($imem_rd_en $imem_rd_addr)
-
+            
             $dummy[0:0]          = 1'b0;
       @_stage
          $ANY = /top|cpu<>0$ANY;
-
+         
          /xreg[31:0]
             $ANY = /top|cpu/xreg<>0$ANY;
             `BOGUS_USE($dummy)
-
+         
          /dmem[15:0]
             $ANY = /top|cpu/dmem<>0$ANY;
             `BOGUS_USE($dummy)
