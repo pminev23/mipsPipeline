@@ -33,38 +33,38 @@ m4_ifelse_block(M4_MAKERCHIP, 1,['
       '],['
       
       ?$imem_rd_en
-         $imem_rd_data[31:0] = ($imem_rd_addr[31:0] == 0) ? *idata0 :
-                        ($imem_rd_addr[31:0] == 1) ? *idata1 :
-                        ($imem_rd_addr[31:0] == 2) ? *idata2 :
-                        ($imem_rd_addr[31:0] == 3) ? *idata3 :
-                        ($imem_rd_addr[31:0] == 4) ? *idata4 :
-                        ($imem_rd_addr[31:0] == 5) ? *idata5 :
-                        ($imem_rd_addr[31:0] == 6) ? *idata6 :
-                        ($imem_rd_addr[31:0] == 7) ? *idata7 :
-                        ($imem_rd_addr[31:0] == 8) ? *idata8 :
-                        ($imem_rd_addr[31:0] == 9) ? *idata9 :
-                        ($imem_rd_addr[31:0] == 10) ? *idata10 :
-                        ($imem_rd_addr[31:0] == 11) ? *idata11 :
-                        ($imem_rd_addr[31:0] == 12) ? *idata12 :
-                        ($imem_rd_addr[31:0] == 13) ? *idata13 :
-                        ($imem_rd_addr[31:0] == 14) ? *idata14 :
-                        ($imem_rd_addr[31:0] == 15) ? *idata15 :
-                        ($imem_rd_addr[31:0] == 16) ? *idata16 :
-                        ($imem_rd_addr[31:0] == 17) ? *idata17 :
-                        ($imem_rd_addr[31:0] == 18) ? *idata18 :
-                        ($imem_rd_addr[31:0] == 19) ? *idata19 :
-                        ($imem_rd_addr[31:0] == 20) ? *idata20 :
-                        ($imem_rd_addr[31:0] == 21) ? *idata21 :
-                        ($imem_rd_addr[31:0] == 22) ? *idata22 :
-                        ($imem_rd_addr[31:0] == 23) ? *idata23 :
-                        ($imem_rd_addr[31:0] == 24) ? *idata24 :
-                        ($imem_rd_addr[31:0] == 25) ? *idata25 :
-                        ($imem_rd_addr[31:0] == 26) ? *idata26 :
-                        ($imem_rd_addr[31:0] == 27) ? *idata27 :
-                        ($imem_rd_addr[31:0] == 28) ? *idata28 :
-                        ($imem_rd_addr[31:0] == 29) ? *idata29 :
-                        ($imem_rd_addr[31:0] == 30) ? *idata30 :
-                        ($imem_rd_addr[31:0] == 31) ? *idata31 :
+         $imem_rd_data[31:0] = ($imem_rd_addr == 0) ? *idata0 :
+                        ($imem_rd_addr == 1) ? *idata1 :
+                        ($imem_rd_addr == 2) ? *idata2 :
+                        ($imem_rd_addr == 3) ? *idata3 :
+                        ($imem_rd_addr == 4) ? *idata4 :
+                        ($imem_rd_addr == 5) ? *idata5 :
+                        ($imem_rd_addr == 6) ? *idata6 :
+                        ($imem_rd_addr == 7) ? *idata7 :
+                        ($imem_rd_addr == 8) ? *idata8 :
+                        ($imem_rd_addr == 9) ? *idata9 :
+                        ($imem_rd_addr == 10) ? *idata10 :
+                        ($imem_rd_addr == 11) ? *idata11 :
+                        ($imem_rd_addr == 12) ? *idata12 :
+                        ($imem_rd_addr == 13) ? *idata13 :
+                        ($imem_rd_addr == 14) ? *idata14 :
+                        ($imem_rd_addr == 15) ? *idata15 :
+                        ($imem_rd_addr == 16) ? *idata16 :
+                        ($imem_rd_addr == 17) ? *idata17 :
+                        ($imem_rd_addr == 18) ? *idata18 :
+                        ($imem_rd_addr == 19) ? *idata19 :
+                        ($imem_rd_addr == 20) ? *idata20 :
+                        ($imem_rd_addr == 21) ? *idata21 :
+                        ($imem_rd_addr == 22) ? *idata22 :
+                        ($imem_rd_addr == 23) ? *idata23 :
+                        ($imem_rd_addr == 24) ? *idata24 :
+                        ($imem_rd_addr == 25) ? *idata25 :
+                        ($imem_rd_addr == 26) ? *idata26 :
+                        ($imem_rd_addr == 27) ? *idata27 :
+                        ($imem_rd_addr == 28) ? *idata28 :
+                        ($imem_rd_addr == 29) ? *idata29 :
+                        ($imem_rd_addr == 30) ? *idata30 :
+                        ($imem_rd_addr == 31) ? *idata31 :
                         31'b0 ;
       '])  
     
