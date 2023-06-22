@@ -3762,7 +3762,7 @@
                   /fpu
                      m5+operands(fpu_, /fpu_src, 3:1)
                )
-            $replay = ($pending_replay m5_if(m5_EXT_F, ['|| /fpu$pending_replay']));
+            $replay = $pending_replay;
          
          // =======
          // Execute
