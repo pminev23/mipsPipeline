@@ -3702,7 +3702,7 @@
                   // pull values from /orig_load_inst or /hold_inst depending on which second issue
                   $ANY = |fetch/instr$second_issue_ld ? |fetch/instr/orig_load_inst$ANY : m5_if(m5_EXT_M, ['|fetch/instr$second_issue_div_mul ? |fetch/instr/hold_inst>>m5_NON_PIPELINED_BUBBLES$ANY :']) m5_if(m5_EXT_F, ['|fetch/instr$fpu_second_issue_div_sqrt ? |fetch/instr/hold_inst>>m5_NON_PIPELINED_BUBBLES$ANY :']) m5_if(m5_EXT_B, ['|fetch/instr$second_issue_clmul_crc ? |fetch/instr/hold_inst>>m5_NON_PIPELINED_BUBBLES$ANY :']) |fetch/instr/orig_load_inst$ANY;
                   /src[2:1]
-                     $ANY = |fetch/instr$second_issue_ld ? |fetch/instr/orig_load_inst/src$ANY : m5_if(m5_EXT_M, ['|fetch/instr$second_issue_div_mul ? |fetch/instr/hold_inst/src>>m5_NON_PIPELINED_BUBBLES$ANY :']) m5_if(m5_EXT_F, ['|fetch/instr$fpu_second_issue_div_sqrt ? |fetch/instr/hold_inst/src>>m5_NON_PIPELINED_BUBBLES$ANY :']) m5_if(m5_EXT_B, ['|fetch/instr$second_issue_clmul_crc ? |fetch/instr/hold_inst/src>>m5_NON_PIPELINED_BUBBLES$ANY :']) |fetch/instr/orig_load_inst/src$ANY;
+                     $ANY = |fetch/instr$second_issue_ld ? |fetch/instr/orig_load_inst/src$ANY : |fetch/instr/orig_load_inst/src$ANY;
                   m5+ifelse(m5_EXT_F, 1,
                      \TLV
                         /fpu
